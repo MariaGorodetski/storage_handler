@@ -1,5 +1,5 @@
 import argparse
-from _storage_handler import Storage_handler
+from _storage_handler import StorageHandler
 
 
 def object_upload():
@@ -15,7 +15,7 @@ def object_upload():
         '--new_object', dest='new_object', type=str,
         help='The new name of the uploaded object', default=None)
     args = parser.parse_args()
-    bucket = Storage_handler(args.bucket)
+    bucket = StorageHandler(args.bucket)
     bucket.upload_object(args.object, args.new_object)
 
 
@@ -32,7 +32,7 @@ def object_download():
         '--new_object', dest='new_object', type=str,
         help='The new name of the downloaded object', default=None)
     args = parser.parse_args()
-    bucket = Storage_handler(args.bucket)
+    bucket = StorageHandler(args.bucket)
     bucket.download_object(args.object, args.new_object)
 
     
@@ -43,5 +43,7 @@ def list_objects():
         '--bucket', dest='bucket', type=str,
         help='Bucket name')
     args = parser.parse_args()
-    bucket = Storage_handler(args.bucket)
-    bucket.objects_list()
+    bucket = StorageHandler(args.bucket)
+    objects = bucket.objects_list()
+    for object in objects:
+        print object.name

@@ -1,13 +1,11 @@
 from google.cloud import storage
 
 
-class Storage_handler():
-
+class StorageHandler():
     
     def __init__(self, bucket_name):
         client = storage.Client()
         self.bucket = client.get_bucket(bucket_name)
-
 
     def upload_object(self, object_name, new_object_name):
         if new_object_name is not None:
@@ -16,7 +14,6 @@ class Storage_handler():
             object = self.bucket.blob(object_name)
         with open(object_name, 'rb') as file_name:
             object.upload_from_file(file_name)
-
     
     def download_object(self, object_name, new_object_name):
         object = self.bucket.blob(object_name)
@@ -25,8 +22,6 @@ class Storage_handler():
         else:
             object.download_to_filename(object_name)
 
-
     def objects_list(self):
         objects = self.bucket.list_blobs()
-        for object in objects:
-            print object.name
+        return objects
