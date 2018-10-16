@@ -32,8 +32,8 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'bucket_object_upload = storage_handler.__utils_main__:object_upload'
-            'bucket_object_download = storage_handler.__utils_main__:object_download'
+            'bucket_object_upload = storage_handler.__utils_main__:object_upload',
+            'bucket_object_download = storage_handler.__utils_main__:object_download',
             'bucket_object_list = storage_handler.__utils_main__:list_objects'
         ]
     },
