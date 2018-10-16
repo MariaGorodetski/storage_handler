@@ -1,5 +1,7 @@
 import argparse
-from _storage_handler import *
+from _storage_handler import upload_object
+from _sotrage_handler import download_object
+from _storage_handler import objects_list
 
 
 def object_upload():
@@ -17,6 +19,7 @@ def object_upload():
     args = parser.parse_args()
     upload_object(args.bucket, args.object, args.new_object)
 
+
 def object_download():
     parser = argparse.ArgumentParser(
         description='Downloading an object from an existing bucket')
@@ -32,6 +35,7 @@ def object_download():
     args = parser.parse_args()
     download_object(args.bucket, args.object, args.new_object)
 
+    
 def list_objects():
     parser = argparse.ArgumentParser(
         description='List of objects from an existing bucket')

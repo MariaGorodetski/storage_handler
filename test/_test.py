@@ -1,2 +1,4 @@
 import unittest
-from  storage_handler import *
+from _storage_handler import upload_object
+from _storage_handler import download_object
+from _storage_handler import objects_list

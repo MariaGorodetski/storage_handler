@@ -9,6 +9,7 @@ def upload_object(bucket_name, object_name, new_object_name):
     object = bucket.blob(object_name)
     object.upload_from_file(object_name)
 
+    
 def download_object(bucket_name, object_name, new_object_name):
     client = storage.Client()
     bucket = client.get_bucket(bucket_name)
