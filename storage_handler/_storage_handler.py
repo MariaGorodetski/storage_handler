@@ -1,4 +1,5 @@
 from google.cloud import storage
+import os
 
 
 class StorageHandler():
@@ -11,7 +12,8 @@ class StorageHandler():
         if new_object_name is not None:
             object = self.bucket.blob(new_object_name)
         else:
-            object = self.bucket.blob(object_name)
+            object_name_tail = os.path.split(object_name)[1]
+            object = self.bucket.blob(object_name_tail)
         with open(object_name, 'rb') as file_name:
             object.upload_from_file(file_name)
     
